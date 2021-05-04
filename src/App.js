@@ -1,36 +1,24 @@
-import React, { useState } from "react";
-import Dice from "./components/Dice/Dice";
-import { Container } from "./App.styled";
+import React from "react";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import MultiPlayer from "./pages/MultiPlayer/MultiPlayer";
+import SinglePlayer from "./pages/SinglePlayer/SinglePlayer";
 
 function App() {
-	const [numberOfDice, setNumberOfDice] = useState(1);
-	const arr = [...Array(10).keys()].map((x) => x + 1);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setNumberOfDice(Number(e.target.numOfDice.value));
-	};
-
 	return (
-		<Container>
-			<form
-				style={{ color: "white", marginBottom: "20px" }}
-				onSubmit={handleSubmit}
-			>
-				<label>
-					Dice to be rolled:
-					<select name="numOfDice">
-						{arr.map((element) => (
-							<option key={element} value={element}>
-								{element}
-							</option>
-						))}
-					</select>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-			<Dice numberOfDice={numberOfDice} />
-		</Container>
+		<Router>
+			<Switch>
+				<Route path="/multiplayer">
+					<MultiPlayer />
+				</Route>
+				<Route path="/single-player">
+					<SinglePlayer />
+				</Route>
+				<Route path="/">
+					<Home />
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 
