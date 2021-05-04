@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import Dice from "./components/Dice/Dice";
 import { Container } from "./App.styled";
 
 function App() {
-	const arr = [...Array(10).keys()].map((x) => x + 1);
 	const [numberOfDice, setNumberOfDice] = useState(1);
+	const arr = [...Array(10).keys()].map((x) => x + 1);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -28,6 +29,7 @@ function App() {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
+			<Dice numberOfDice={numberOfDice} />
 		</Container>
 	);
 }
