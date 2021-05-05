@@ -1,5 +1,5 @@
 import React from "react";
-import { FormContainer } from "./Form.styled";
+import { FormContainer, Select, Submit } from "./Form.styled";
 
 const Form = ({ submit }) => {
 	const arr = [...Array(10).keys()].map((x) => x + 1);
@@ -8,18 +8,15 @@ const Form = ({ submit }) => {
 			<FormContainer onSubmit={(e) => submit(e)}>
 				<label>
 					Dice to be rolled:
-					<select name="numOfDice">
-						{/* <option defaultValue={0} disabled>
-							0
-						</option> */}
+					<Select name="numOfDice">
 						{arr.map((element) => (
 							<option key={element} value={element}>
 								{element}
 							</option>
 						))}
-					</select>
+					</Select>
 				</label>
-				<button type="submit">Submit</button>
+				<Submit type="submit">Apply</Submit>
 			</FormContainer>
 		</>
 	);

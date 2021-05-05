@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Die from "../Die/Die";
-import { DiceContainer, Button } from "./Dice.styled";
+import { DiceContainer, Button, Div, Total } from "./Dice.styled";
 
 const Dice = ({ numberOfDice, isRollPressed, handleClick }) => {
 	const [total, setTotal] = useState("");
@@ -13,15 +13,13 @@ const Dice = ({ numberOfDice, isRollPressed, handleClick }) => {
 					(accumulator, currentValue) => accumulator + currentValue
 				);
 				if (currentLS.length === 2) {
-					console.log("same length");
 					if (currentLS[0] === currentLS[1]) {
-						console.log("doubles");
-						setTotal(`You rolled ${result}, DOUBLE!!!`);
+						setTotal(`You rolled a ${result}, DOUBLE!!!`);
 					} else {
-						setTotal(`You rolled ${result}`);
+						setTotal(`You rolled a ${result}`);
 					}
 				} else {
-					setTotal(`You rolled ${result}`);
+					setTotal(`You rolled a ${result}`);
 				}
 			}
 		}
@@ -40,10 +38,10 @@ const Dice = ({ numberOfDice, isRollPressed, handleClick }) => {
 						/>
 					))}
 			</DiceContainer>
-			<div>
-				<Button onClick={() => handleClick()}>Roll your dice</Button>
-				{total}
-			</div>
+			<Div>
+				<Button onClick={() => handleClick()}>ROLL TIME 🎲</Button>
+				<Total>{total}</Total>
+			</Div>
 		</>
 	);
 };

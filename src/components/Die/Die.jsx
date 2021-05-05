@@ -11,6 +11,10 @@ const Die = ({ buttonPressed, diceSelected }) => {
 		setDice((dice) => {
 			let singlePlayerArr = [];
 			singlePlayerArr = JSON.parse(localStorage.getItem("singlePlayer")) || [];
+			if (diceSelected === singlePlayerArr.length - 1) {
+				localStorage.clear();
+				console.log({ diceSelected, singlePlayerArr: singlePlayerArr.length });
+			}
 			if (dice === randomNum) {
 				console.log("here 1");
 				if (randomNum === 6) {
@@ -24,13 +28,6 @@ const Die = ({ buttonPressed, diceSelected }) => {
 					console.log("here 3");
 					return randomNum + 1;
 				}
-				// } else if (diceSelected !== singlePlayerArr.length + 1) {
-				// 	console.log(diceSelected, singlePlayerArr.length + 1);
-				// 	localStorage.clear();
-				// 	singlePlayerArr.push(randomNum);
-				// 	localStorage.setItem("singlePlayer", JSON.stringify(singlePlayerArr));
-				// 	console.log("here 5");
-				// 	return randomNum;
 			} else {
 				singlePlayerArr.push(randomNum);
 				localStorage.setItem("singlePlayer", JSON.stringify(singlePlayerArr));
