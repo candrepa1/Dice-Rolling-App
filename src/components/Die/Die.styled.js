@@ -5,6 +5,7 @@ export const DieContainer = styled.div`
 	height: 80px;
 	width: 80px;
 	margin-bottom: 20px;
+	margin-right: 20px;
 	color: black;
 	border-radius: 4px;
 	padding: 6px;
