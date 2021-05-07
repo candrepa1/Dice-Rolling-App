@@ -1,4 +1,4 @@
-# Project Title
+# Description
 
 A dice rolling app that has single player mode and multiplayer mode. 
 
