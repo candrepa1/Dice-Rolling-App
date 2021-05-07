@@ -4,8 +4,8 @@ A dice rolling app that has single player mode and multiplayer mode.
 
 ### Dependencies
 
-* - react-router-dom
-* - styled-components
+* react-router-dom
+* styled-components
 
 ### Live Version 
 
@@ -13,11 +13,11 @@ A dice rolling app that has single player mode and multiplayer mode.
 
 ### Installing
 
-* 1. Run git clone https://github.com/candrepa1/Dice-Rolling-App.git
-* 2. cd Dice-Rolling-App
-* 2. Run yarn install in your command line
-* 3. Run yarn start in your command line
-* 4. Have fun testing your luck! ☺️
+1. Run git clone https://github.com/candrepa1/Dice-Rolling-App.git
+2. cd Dice-Rolling-App
+3. Run yarn install in your command line
+4. Run yarn start in your command line
+5. Have fun testing your luck! ☺️
 
 # Getting Started with Create React App
 
