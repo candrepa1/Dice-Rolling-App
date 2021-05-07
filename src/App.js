@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import GameLogContextProvider from "./context/gameLogContext/GameLogContextProvider";
 import HistoryContextProvider from "./context/historyContext/HistoryContextProvider";
 import Home from "./pages/Home/Home";
 import MultiPlayer from "./pages/MultiPlayer/MultiPlayer";
@@ -10,7 +11,9 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/multiplayer">
-					<MultiPlayer />
+					<GameLogContextProvider>
+						<MultiPlayer />
+					</GameLogContextProvider>
 				</Route>
 				<Route path="/single-player">
 					<HistoryContextProvider>

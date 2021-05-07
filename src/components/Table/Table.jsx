@@ -36,7 +36,7 @@ const Table = () => {
 		<TableContainer>
 			<thead>
 				<tr>
-					<TableHeading scope="colgroup" colSpan="2">
+					<TableHeading data-testid="table-head" scope="colgroup" colSpan="2">
 						HISTORY
 					</TableHeading>
 				</tr>
@@ -50,7 +50,6 @@ const Table = () => {
 							{item.turn.reduce(
 								(accumulator, currentValue) => accumulator + currentValue
 							)}{" "}
-							{/* {[...item.turn]} */}
 						</TableData>
 					</tr>
 				))}

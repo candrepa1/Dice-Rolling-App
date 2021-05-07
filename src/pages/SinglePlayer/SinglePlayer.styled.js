@@ -45,11 +45,3 @@ export const PlayAgain = styled(Button)`
 		background-color: #cccccc;
 	}
 `;
-
-// export const FactsContainer = styled.div`
-// 	width: 100%;
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: end;
-// 	align-items: center;
-// `;

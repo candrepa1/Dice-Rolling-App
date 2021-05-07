@@ -34,4 +34,5 @@ export const Div = styled.div`
 export const Total = styled.p`
 	margin-top: 50px;
 	text-decoration: underline;
+	color: white;
 `;

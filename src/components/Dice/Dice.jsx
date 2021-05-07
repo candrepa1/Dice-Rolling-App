@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Die from "../Die/Die";
 import { DiceContainer, Button, Div, Total } from "./Dice.styled";
 
@@ -39,7 +39,9 @@ const Dice = ({ numberOfDice, isRollPressed, handleClick }) => {
 					))}
 			</DiceContainer>
 			<Div>
-				<Button onClick={() => handleClick()}>ROLL TIME 🎲</Button>
+				<Button data-testid="roll-button" onClick={() => handleClick()}>
+					ROLL TIME 🎲
+				</Button>
 				<Total>{total}</Total>
 			</Div>
 		</>

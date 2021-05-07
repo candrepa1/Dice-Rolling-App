@@ -11,13 +11,11 @@ import {
 	TopContainer,
 	BottomContainer,
 	PlayAgain,
-	FactsContainer,
 } from "./SinglePlayer.styled";
 
 const SinglePlayer = () => {
 	const [numberOfDice, setNumberOfDice] = useState(1);
 	const [isRollPressed, setIsRollPressed] = useState(false);
-	// const [rolled, setRolled] = useState("");
 	const { pushToArr, rolledArr } = useContext(HistoryContext);
 
 	const handleSubmit = (e) => {
@@ -26,15 +24,7 @@ const SinglePlayer = () => {
 	};
 
 	const handleClick = () => {
-		// const currentLS = JSON.parse(localStorage.getItem("singlePlayer"));
-		// if (currentLS === null) {
-		// 	setIsRollPressed(!isRollPressed);
-		// } else if (currentLS.length === numberOfDice) {
-		// 	localStorage.clear();
-		// 	setIsRollPressed(!isRollPressed);
-		// } else {
 		setIsRollPressed(!isRollPressed);
-		// }
 	};
 
 	useEffect(() => {
@@ -51,13 +41,11 @@ const SinglePlayer = () => {
 			<BottomContainer>
 				<LeftSide>
 					{rolledArr.length === 10 ? (
-						// <FactsContainer>
 						<>
 							<Facts />
 							<PlayAgain onClick={() => pushToArr(false)}>Play Again</PlayAgain>
 						</>
 					) : (
-						// </FactsContainer>
 						<>
 							<Form submit={handleSubmit} />
 							<Dice

@@ -14,8 +14,12 @@ const Home = () => {
 				You can roll by yourself or roll with other people in multiplayer mode!
 			</Description>
 			<div>
-				<ToAnotherView to="/single-player">Single Player Mode</ToAnotherView>
-				<ToAnotherView to="/multiplayer">Multiplayer Mode</ToAnotherView>
+				<ToAnotherView data-testid="singleplayer" to="/single-player">
+					Single Player Mode
+				</ToAnotherView>
+				<ToAnotherView to="/multiplayer" data-testid="mulltiplayer">
+					Multiplayer Mode
+				</ToAnotherView>
 			</div>
 		</HomeContainer>
 	);

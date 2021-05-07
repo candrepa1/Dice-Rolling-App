@@ -1,18 +1,17 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Facts from "./Facts";
+import SinglePlayer from "./SinglePlayer";
 import { HistoryContext } from "../../context/historyContext/HistoryContextProvider";
 import { historyContextValue } from "../../test-utils/constants";
 
-test("context value received", () => {
-	const container = render(
+test("testing UI by text and presence of a table", () => {
+	const { getByText, getByRole } = render(
 		<HistoryContext.Provider value={historyContextValue}>
-			<Facts />
+			<SinglePlayer />
 		</HistoryContext.Provider>
 	);
 
-	expect(historyContextValue.endOfGame).toStrictEqual({
-		score: 30,
-		totalPossibleScore: 60,
-	});
+	expect(getByText("You have 10 turns to roll the dice,")).toBeDefined();
+
+	expect(getByRole("table")).toBeInTheDocument();
 });
