@@ -36,6 +36,10 @@ const useRolledHistory = () => {
 					};
 				});
 			}
+		} else {
+			setMultiplayerTurn([]);
+			setMultiplayerScore({});
+			setDoublesCount({});
 		}
 	};
 

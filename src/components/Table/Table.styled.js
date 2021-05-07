@@ -13,4 +13,5 @@ export const TableData = styled.td`
 export const TableHeading = styled.th`
 	border: 2px solid white;
 	padding: 8px;
+	text-transform: capitalize;
 `;

@@ -44,3 +44,36 @@ export const PlayerTurn = styled.p`
 	font-size: 20px;
 	margin: 40px 0;
 `;
+
+export const Podium = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 100px;
+	color: white;
+	font-size: 23px;
+`;
+
+export const StatsContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40px;
+`;
+
+export const LeftSide = styled.div`
+	display: flex;
+	width: 50%;
+	justify-content: center;
+	color: white;
+`;
+
+export const RightSide = styled.div`
+	display: flex;
+	width: 50%;
+`;
+
+export const Items = styled.li`
+	text-transform: capitalize;
+`;

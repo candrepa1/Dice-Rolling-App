@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddPlayer from "../../components/AddPlayer/AddPlayer";
 import Dice from "../../components/Dice/Dice";
+import MultiplayerTable from "../../components/MultiplayerTable/MultiplayerTable";
 import useRolledHistory from "../../hooks/useRolledHistory/useRolledHistory";
 import {
 	Instructions,
@@ -9,6 +10,11 @@ import {
 	PlayersNames,
 	StartGame,
 	PlayerTurn,
+	Podium,
+	StatsContainer,
+	LeftSide,
+	RightSide,
+	Items,
 } from "./MultiPlayer.styled";
 
 const MultiPlayer = () => {
@@ -17,6 +23,7 @@ const MultiPlayer = () => {
 	const [startGame, setStartGame] = useState(false);
 	const [isRollPressed, setIsRollPressed] = useState(false);
 	const [currentPlayer, setCurrentPlayer] = useState(-1);
+	const [podium, setPodium] = useState([]);
 
 	const {
 		saveMultiplayerTurn,
@@ -55,19 +62,33 @@ const MultiPlayer = () => {
 	}, [isRollPressed]);
 
 	useEffect(() => {
+		console.log(startGame);
 		if (startGame === false) {
 			setPlayers([]);
 			setInput("");
 			setStartGame(false);
 			setIsRollPressed(false);
 			setCurrentPlayer(0);
+			saveMultiplayerTurn();
+			setPodium([]);
 		}
 	}, [startGame]);
+
+	useEffect(() => {
+		if (players.length * 5 === multiplayerTurn.length) {
+			const sortable = Object.entries(multiplayerScore).sort(
+				([, a], [, b]) => b - a
+			);
+			setPodium(sortable);
+		}
+	}, [multiplayerScore]);
 
 	return (
 		<>
 			<Instructions>
-				<li>Enter the names of all players, at least 2 players.</li>
+				<li data-testid="first-instruction">
+					Enter the names of all players, at least 2 players.
+				</li>
 				<li>
 					The amount of turns will change depending on the number of players.
 				</li>
@@ -109,46 +130,46 @@ const MultiPlayer = () => {
 								isRollPressed={isRollPressed}
 								handleClick={handleClick}
 							/>
-							{/* {rolledArr.map((item, index) => (
-						<p key={index}>{item.turn}</p>
-					))} */}
 						</>
 					)}
-					<table style={{ color: "white" }}>
-						<thead>
-							<tr>
-								<th>SCORE</th>
-							</tr>
-						</thead>
-						<tbody>
-							{multiplayerTurn.map((item, index) => (
-								<tr key={index}>
-									<th>{item.player}</th>
-									<td>
-										{item.turn.reduce((acc, current) => acc + current)}{" "}
-										{item.turn[0] === item.turn[1] ? "DOUBLES" : null}
-									</td>
-								</tr>
-							))}
-						</tbody>
-						<tfoot>TOTAL</tfoot>
-					</table>
-					<ul style={{ color: "white" }}>
-						{players.length * 5 === multiplayerTurn.length &&
-							players.map((item) => (
-								<li>
-									{item}: {multiplayerScore[item]}
-								</li>
-							))}
-					</ul>
-					<ul style={{ color: "white" }}>
-						{players.length * 5 === multiplayerTurn.length &&
-							players.map((item) => (
-								<li>
-									{item}: {doublesCount[item]}
-								</li>
-							))}
-					</ul>
+					{players.length * 5 === multiplayerTurn.length && (
+						<StatsContainer>
+							<LeftSide>
+								<MultiplayerTable multiplayerTurn={multiplayerTurn} />
+							</LeftSide>
+							<RightSide>
+								<Podium>
+									<h2>PODIUM:</h2>
+									<ol>
+										{podium.map((item, index) => (
+											<Items key={index}>
+												{item[0]}: {item[1]}
+											</Items>
+										))}
+									</ol>
+								</Podium>
+								<Podium>
+									{Object.keys(doublesCount).length === 0 &&
+									doublesCount.constructor === Object ? null : (
+										<>
+											<h2>DOUBLES:</h2>
+											<ul>
+												{players.length * 5 === multiplayerTurn.length && (
+													<>
+														{players.map((item) => (
+															<Items>
+																{item}: {doublesCount[item] || 0}
+															</Items>
+														))}
+													</>
+												)}
+											</ul>
+										</>
+									)}
+								</Podium>
+							</RightSide>
+						</StatsContainer>
+					)}
 				</>
 			)}
 		</>
