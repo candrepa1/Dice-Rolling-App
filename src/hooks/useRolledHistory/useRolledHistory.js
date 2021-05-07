@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const useRolledHistory = () => {
+	// custom hook that controls all data related to turns, rolled, and stats.
 	const [rolledArr, setRolledArr] = useState([]);
 	const [endOfGame, setEndOfGame] = useState({});
 	const [multiplayerTurn, setMultiplayerTurn] = useState([]);
@@ -37,6 +38,7 @@ const useRolledHistory = () => {
 				});
 			}
 		} else {
+			// clean up after end game is clicked
 			setMultiplayerTurn([]);
 			setMultiplayerScore({});
 			setDoublesCount({});

@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import MultiplayerTable from "./MultiplayerTable";
 
-test("whatevs", () => {
+test("checks returns based on turns", () => {
 	const multiplayerTurn = [
 		{ player: "user1", turn: [5, 2] },
 		{ player: "user2", turn: [6, 6] },

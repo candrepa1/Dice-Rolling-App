@@ -2,6 +2,7 @@ import React from "react";
 import { FormContainer, Select, Submit } from "./Form.styled";
 
 const Form = ({ submit }) => {
+	// user chooses the number of dice they want to roll.
 	const arr = [...Array(10).keys()].map((x) => x + 1);
 	return (
 		<FormContainer onSubmit={(e) => submit(e)}>

@@ -62,7 +62,7 @@ const MultiPlayer = () => {
 	}, [isRollPressed]);
 
 	useEffect(() => {
-		console.log(startGame);
+		//clean up if the user wants to end the game
 		if (startGame === false) {
 			setPlayers([]);
 			setInput("");
@@ -75,6 +75,7 @@ const MultiPlayer = () => {
 	}, [startGame]);
 
 	useEffect(() => {
+		// sorting the results array so that the podium element can be displayed from highest to lowest.
 		if (players.length * 5 === multiplayerTurn.length) {
 			const sortable = Object.entries(multiplayerScore).sort(
 				([, a], [, b]) => b - a

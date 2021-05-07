@@ -3,6 +3,7 @@ import Die from "../Die/Die";
 import { DiceContainer, Button, Div, Total } from "./Dice.styled";
 
 const Dice = ({ numberOfDice, isRollPressed, handleClick }) => {
+	// calls on the component Die based on the number of dice selected by the user, when the roll button is pressed, the functions stated in the singleplayer page will be called and the state total will be updated with the appropiate message to display (total + wasDouble?)
 	const [total, setTotal] = useState("");
 
 	useEffect(() => {

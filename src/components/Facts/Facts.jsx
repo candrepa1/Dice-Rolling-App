@@ -3,6 +3,7 @@ import { HistoryContext } from "../../context/historyContext/HistoryContextProvi
 import { Stats } from "./Facts.style";
 
 const Facts = () => {
+	// endOfGame is the variable that holds the total score in singlePlayer mode
 	const { endOfGame } = useContext(HistoryContext);
 	return (
 		<Stats>

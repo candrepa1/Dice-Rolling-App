@@ -6,4 +6,7 @@ test("default values of states", () => {
 
 	expect(result.current.rolledArr).toStrictEqual([]);
 	expect(result.current.endOfGame).toStrictEqual({});
+	expect(result.current.multiplayerTurn).toStrictEqual([]);
+	expect(result.current.doublesCount).toStrictEqual({});
+	expect(result.current.multiplayerScore).toStrictEqual({});
 });

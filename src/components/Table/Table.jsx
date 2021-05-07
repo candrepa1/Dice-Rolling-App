@@ -3,16 +3,17 @@ import { HistoryContext } from "../../context/historyContext/HistoryContextProvi
 import { TableContainer, TableHeading, TableData } from "./Table.styled";
 
 const Table = () => {
+	// History log for single player mode.
 	const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 	const [amountOfDiceRolled, setAmountOfDiceRolled] = useState(0);
 	const [score, setScore] = useState(0);
 	const { rolledArr, pushToEndOfGame } = useContext(HistoryContext);
 
 	useEffect(() => {
+		// sets new states after the 10 turns are up.
 		if (rolledArr.length === 10) {
 			rolledArr.forEach((element) => {
 				setAmountOfDiceRolled((prev) => {
-					console.log(prev, element.turn.length);
 					return prev + element.turn.length;
 				});
 				element.turn.forEach((item) => {
